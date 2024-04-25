@@ -28,22 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.PicLogo = new System.Windows.Forms.PictureBox();
             this.LblInfo = new System.Windows.Forms.Label();
             this.LblTitle = new System.Windows.Forms.Label();
             this.BtnConfirm = new System.Windows.Forms.Button();
+            this.PicLogo = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.PicLogo)).BeginInit();
             this.SuspendLayout();
-            // 
-            // PicLogo
-            // 
-            this.PicLogo.Image = global::Dynverter.Properties.Resources.logo;
-            this.PicLogo.Location = new System.Drawing.Point(12, 12);
-            this.PicLogo.Name = "PicLogo";
-            this.PicLogo.Size = new System.Drawing.Size(250, 250);
-            this.PicLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.PicLogo.TabIndex = 0;
-            this.PicLogo.TabStop = false;
             // 
             // LblInfo
             // 
@@ -52,7 +42,7 @@
             this.LblInfo.Name = "LblInfo";
             this.LblInfo.Size = new System.Drawing.Size(116, 90);
             this.LblInfo.TabIndex = 1;
-            this.LblInfo.Text = "v 1.1.3.16\r\n\r\n作者：李正浩\r\n\r\n2024.04";
+            this.LblInfo.Text = "v 1.1.4.17\r\n\r\n作者：李正浩\r\n\r\n2024.04";
             // 
             // LblTitle
             // 
@@ -73,6 +63,16 @@
             this.BtnConfirm.Text = "确定";
             this.BtnConfirm.UseVisualStyleBackColor = true;
             this.BtnConfirm.Click += new System.EventHandler(this.BtnConfirm_Click);
+            // 
+            // PicLogo
+            // 
+            this.PicLogo.Image = global::Dynverter.Properties.Resources.logo;
+            this.PicLogo.Location = new System.Drawing.Point(12, 12);
+            this.PicLogo.Name = "PicLogo";
+            this.PicLogo.Size = new System.Drawing.Size(250, 250);
+            this.PicLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PicLogo.TabIndex = 0;
+            this.PicLogo.TabStop = false;
             // 
             // FrmAbout
             // 

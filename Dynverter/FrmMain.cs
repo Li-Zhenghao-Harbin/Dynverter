@@ -19,6 +19,7 @@ namespace Dynverter
         }
 
         public static List<string> exceptions = new List<string>();
+        public static string source;
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
@@ -83,7 +84,19 @@ namespace Dynverter
             DisplayConvertedResult(rConverter.GetResult());
         }
 
-        private void DisplayConvertedResult(string result)
+        // 匹配参数
+        private void ShowMatchParametersForm()
+        {
+            source = RtxSourceSql.Text;
+            FrmParameters frmParameters = new FrmParameters();
+            frmParameters.ShowDialog();
+            if (FrmParameters.matched)
+            {
+                DisplayConvertedResult(FrmParameters.matchedResult);
+            }
+        }
+
+        public void DisplayConvertedResult(string result)
         {
             // 显示转换语句窗口
             DisplayRtxConvertedSql();
@@ -157,6 +170,11 @@ namespace Dynverter
             RConvertSql();
         }
 
+        private void BtnMatchParameters_Click(object sender, EventArgs e)
+        {
+            ShowMatchParametersForm();
+        }
+
         /*
          * 菜单-文件
          */
@@ -178,6 +196,11 @@ namespace Dynverter
             RConvertSql();
         }
 
+        private void 匹配参数MToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowMatchParametersForm();
+        }
+
         /*
          * 菜单-视图
          */
@@ -189,6 +212,14 @@ namespace Dynverter
         private void 输出OToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DisplayRtxOutput(!输出OToolStripMenuItem.Checked);
+        }
+
+        /*
+         * 菜单-格式
+         */
+        private void 自动换行WToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RtxSourceSql.WordWrap = RtxConvertedSql.WordWrap = 自动换行WToolStripMenuItem.Checked = !自动换行WToolStripMenuItem.Checked;
         }
 
         /*
@@ -235,6 +266,13 @@ namespace Dynverter
         {
             PasteToRtx(RtxSourceSql);
             RConvertSql();
+        }
+
+
+        private void 粘贴并匹配参数MToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PasteToRtx(RtxSourceSql);
+            ShowMatchParametersForm();
         }
 
         private void 清空CToolStripMenuItem_Click(object sender, EventArgs e)

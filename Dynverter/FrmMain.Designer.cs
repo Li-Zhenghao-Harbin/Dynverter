@@ -34,8 +34,6 @@
             this.文件FToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.退出XToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.编辑EToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.转换CToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.逆向转换RToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.视图VToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.转换语句视图CToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.输出OToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,15 +42,11 @@
             this.帮助HToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.关于DynverterAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStrip = new System.Windows.Forms.ToolStrip();
-            this.BtnConvert = new System.Windows.Forms.ToolStripButton();
-            this.BtnRConvert = new System.Windows.Forms.ToolStripButton();
             this.SplitContainerRtxs = new System.Windows.Forms.SplitContainer();
             this.TabSourceSql = new System.Windows.Forms.TabControl();
             this.TabPageSourceSql = new System.Windows.Forms.TabPage();
             this.RtxSourceSql = new System.Windows.Forms.RichTextBox();
             this.ConMenuStripRtxSourceSql = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.粘贴并转换PToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.粘贴并逆向转换RToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.清空CToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.StatusStripRtxSourceSql = new System.Windows.Forms.StatusStrip();
             this.TabConvertedSql = new System.Windows.Forms.TabControl();
@@ -68,6 +62,17 @@
             this.ConMenuStripRtxOutput = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.清空内容CToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.隐藏输出窗口HToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.匹配参数MToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.粘贴并转换PToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.粘贴并逆向转换RToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.BtnConvert = new System.Windows.Forms.ToolStripButton();
+            this.BtnRConvert = new System.Windows.Forms.ToolStripButton();
+            this.BtnMatchParameters = new System.Windows.Forms.ToolStripButton();
+            this.转换CToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.逆向转换RToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.格式OToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.自动换行WToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.粘贴并匹配参数MToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuStrip.SuspendLayout();
             this.ToolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SplitContainerRtxs)).BeginInit();
@@ -97,6 +102,7 @@
             this.文件FToolStripMenuItem,
             this.编辑EToolStripMenuItem,
             this.视图VToolStripMenuItem,
+            this.格式OToolStripMenuItem,
             this.工具TToolStripMenuItem,
             this.帮助HToolStripMenuItem});
             this.MenuStrip.Location = new System.Drawing.Point(1, 1);
@@ -125,29 +131,11 @@
             // 
             this.编辑EToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.转换CToolStripMenuItem,
-            this.逆向转换RToolStripMenuItem});
+            this.逆向转换RToolStripMenuItem,
+            this.匹配参数MToolStripMenuItem});
             this.编辑EToolStripMenuItem.Name = "编辑EToolStripMenuItem";
             this.编辑EToolStripMenuItem.Size = new System.Drawing.Size(84, 28);
             this.编辑EToolStripMenuItem.Text = "编辑(&E)";
-            // 
-            // 转换CToolStripMenuItem
-            // 
-            this.转换CToolStripMenuItem.Image = global::Dynverter.Properties.Resources.convert;
-            this.转换CToolStripMenuItem.Name = "转换CToolStripMenuItem";
-            this.转换CToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
-            this.转换CToolStripMenuItem.Size = new System.Drawing.Size(322, 34);
-            this.转换CToolStripMenuItem.Text = "转换(&C)";
-            this.转换CToolStripMenuItem.Click += new System.EventHandler(this.转换CToolStripMenuItem_Click);
-            // 
-            // 逆向转换RToolStripMenuItem
-            // 
-            this.逆向转换RToolStripMenuItem.Image = global::Dynverter.Properties.Resources.rconvert;
-            this.逆向转换RToolStripMenuItem.Name = "逆向转换RToolStripMenuItem";
-            this.逆向转换RToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.T)));
-            this.逆向转换RToolStripMenuItem.Size = new System.Drawing.Size(322, 34);
-            this.逆向转换RToolStripMenuItem.Text = "逆向转换(&R)";
-            this.逆向转换RToolStripMenuItem.Click += new System.EventHandler(this.逆向转换RToolStripMenuItem_Click);
             // 
             // 视图VToolStripMenuItem
             // 
@@ -210,31 +198,14 @@
             this.ToolStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.ToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.BtnConvert,
-            this.BtnRConvert});
+            this.BtnRConvert,
+            this.BtnMatchParameters});
             this.ToolStrip.Location = new System.Drawing.Point(1, 33);
             this.ToolStrip.Name = "ToolStrip";
             this.ToolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.ToolStrip.Size = new System.Drawing.Size(1233, 33);
             this.ToolStrip.TabIndex = 1;
             this.ToolStrip.Text = "toolStrip1";
-            // 
-            // BtnConvert
-            // 
-            this.BtnConvert.Image = global::Dynverter.Properties.Resources.convert;
-            this.BtnConvert.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.BtnConvert.Name = "BtnConvert";
-            this.BtnConvert.Size = new System.Drawing.Size(74, 28);
-            this.BtnConvert.Text = "转换";
-            this.BtnConvert.Click += new System.EventHandler(this.BtnConvert_Click);
-            // 
-            // BtnRConvert
-            // 
-            this.BtnRConvert.Image = global::Dynverter.Properties.Resources.rconvert;
-            this.BtnRConvert.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.BtnRConvert.Name = "BtnRConvert";
-            this.BtnRConvert.Size = new System.Drawing.Size(110, 28);
-            this.BtnRConvert.Text = "逆向转换";
-            this.BtnRConvert.Click += new System.EventHandler(this.BtnRConvert_Click);
             // 
             // SplitContainerRtxs
             // 
@@ -299,30 +270,15 @@
             this.ConMenuStripRtxSourceSql.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.粘贴并转换PToolStripMenuItem,
             this.粘贴并逆向转换RToolStripMenuItem,
+            this.粘贴并匹配参数MToolStripMenuItem,
             this.清空CToolStripMenuItem});
             this.ConMenuStripRtxSourceSql.Name = "ConMenuStripRtxSourceSql";
-            this.ConMenuStripRtxSourceSql.Size = new System.Drawing.Size(239, 100);
-            // 
-            // 粘贴并转换PToolStripMenuItem
-            // 
-            this.粘贴并转换PToolStripMenuItem.Image = global::Dynverter.Properties.Resources.convert;
-            this.粘贴并转换PToolStripMenuItem.Name = "粘贴并转换PToolStripMenuItem";
-            this.粘贴并转换PToolStripMenuItem.Size = new System.Drawing.Size(238, 32);
-            this.粘贴并转换PToolStripMenuItem.Text = "粘贴并转换(&P)";
-            this.粘贴并转换PToolStripMenuItem.Click += new System.EventHandler(this.粘贴并转换PToolStripMenuItem_Click);
-            // 
-            // 粘贴并逆向转换RToolStripMenuItem
-            // 
-            this.粘贴并逆向转换RToolStripMenuItem.Image = global::Dynverter.Properties.Resources.rconvert;
-            this.粘贴并逆向转换RToolStripMenuItem.Name = "粘贴并逆向转换RToolStripMenuItem";
-            this.粘贴并逆向转换RToolStripMenuItem.Size = new System.Drawing.Size(238, 32);
-            this.粘贴并逆向转换RToolStripMenuItem.Text = "粘贴并逆向转换(&R)";
-            this.粘贴并逆向转换RToolStripMenuItem.Click += new System.EventHandler(this.粘贴并逆向转换RToolStripMenuItem_Click);
+            this.ConMenuStripRtxSourceSql.Size = new System.Drawing.Size(249, 165);
             // 
             // 清空CToolStripMenuItem
             // 
             this.清空CToolStripMenuItem.Name = "清空CToolStripMenuItem";
-            this.清空CToolStripMenuItem.Size = new System.Drawing.Size(238, 32);
+            this.清空CToolStripMenuItem.Size = new System.Drawing.Size(248, 32);
             this.清空CToolStripMenuItem.Text = "清空(&C)";
             this.清空CToolStripMenuItem.Click += new System.EventHandler(this.清空CToolStripMenuItem_Click);
             // 
@@ -477,6 +433,100 @@
             this.隐藏输出窗口HToolStripMenuItem.Text = "隐藏输出窗口(&H)";
             this.隐藏输出窗口HToolStripMenuItem.Click += new System.EventHandler(this.隐藏输出窗口HToolStripMenuItem_Click);
             // 
+            // 匹配参数MToolStripMenuItem
+            // 
+            this.匹配参数MToolStripMenuItem.Image = global::Dynverter.Properties.Resources.match;
+            this.匹配参数MToolStripMenuItem.Name = "匹配参数MToolStripMenuItem";
+            this.匹配参数MToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
+            this.匹配参数MToolStripMenuItem.Size = new System.Drawing.Size(322, 34);
+            this.匹配参数MToolStripMenuItem.Text = "匹配参数(&M)...";
+            this.匹配参数MToolStripMenuItem.Click += new System.EventHandler(this.匹配参数MToolStripMenuItem_Click);
+            // 
+            // 粘贴并转换PToolStripMenuItem
+            // 
+            this.粘贴并转换PToolStripMenuItem.Image = global::Dynverter.Properties.Resources.convert;
+            this.粘贴并转换PToolStripMenuItem.Name = "粘贴并转换PToolStripMenuItem";
+            this.粘贴并转换PToolStripMenuItem.Size = new System.Drawing.Size(248, 32);
+            this.粘贴并转换PToolStripMenuItem.Text = "粘贴并转换(&P)";
+            this.粘贴并转换PToolStripMenuItem.Click += new System.EventHandler(this.粘贴并转换PToolStripMenuItem_Click);
+            // 
+            // 粘贴并逆向转换RToolStripMenuItem
+            // 
+            this.粘贴并逆向转换RToolStripMenuItem.Image = global::Dynverter.Properties.Resources.rconvert;
+            this.粘贴并逆向转换RToolStripMenuItem.Name = "粘贴并逆向转换RToolStripMenuItem";
+            this.粘贴并逆向转换RToolStripMenuItem.Size = new System.Drawing.Size(248, 32);
+            this.粘贴并逆向转换RToolStripMenuItem.Text = "粘贴并逆向转换(&R)";
+            this.粘贴并逆向转换RToolStripMenuItem.Click += new System.EventHandler(this.粘贴并逆向转换RToolStripMenuItem_Click);
+            // 
+            // BtnConvert
+            // 
+            this.BtnConvert.Image = global::Dynverter.Properties.Resources.convert;
+            this.BtnConvert.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BtnConvert.Name = "BtnConvert";
+            this.BtnConvert.Size = new System.Drawing.Size(74, 28);
+            this.BtnConvert.Text = "转换";
+            this.BtnConvert.Click += new System.EventHandler(this.BtnConvert_Click);
+            // 
+            // BtnRConvert
+            // 
+            this.BtnRConvert.Image = global::Dynverter.Properties.Resources.rconvert;
+            this.BtnRConvert.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BtnRConvert.Name = "BtnRConvert";
+            this.BtnRConvert.Size = new System.Drawing.Size(110, 28);
+            this.BtnRConvert.Text = "逆向转换";
+            this.BtnRConvert.Click += new System.EventHandler(this.BtnRConvert_Click);
+            // 
+            // BtnMatchParameters
+            // 
+            this.BtnMatchParameters.Image = global::Dynverter.Properties.Resources.match;
+            this.BtnMatchParameters.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BtnMatchParameters.Name = "BtnMatchParameters";
+            this.BtnMatchParameters.Size = new System.Drawing.Size(110, 28);
+            this.BtnMatchParameters.Text = "匹配参数";
+            this.BtnMatchParameters.Click += new System.EventHandler(this.BtnMatchParameters_Click);
+            // 
+            // 转换CToolStripMenuItem
+            // 
+            this.转换CToolStripMenuItem.Image = global::Dynverter.Properties.Resources.convert;
+            this.转换CToolStripMenuItem.Name = "转换CToolStripMenuItem";
+            this.转换CToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
+            this.转换CToolStripMenuItem.Size = new System.Drawing.Size(322, 34);
+            this.转换CToolStripMenuItem.Text = "转换(&C)";
+            this.转换CToolStripMenuItem.Click += new System.EventHandler(this.转换CToolStripMenuItem_Click);
+            // 
+            // 逆向转换RToolStripMenuItem
+            // 
+            this.逆向转换RToolStripMenuItem.Image = global::Dynverter.Properties.Resources.rconvert;
+            this.逆向转换RToolStripMenuItem.Name = "逆向转换RToolStripMenuItem";
+            this.逆向转换RToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.T)));
+            this.逆向转换RToolStripMenuItem.Size = new System.Drawing.Size(322, 34);
+            this.逆向转换RToolStripMenuItem.Text = "逆向转换(&R)";
+            this.逆向转换RToolStripMenuItem.Click += new System.EventHandler(this.逆向转换RToolStripMenuItem_Click);
+            // 
+            // 格式OToolStripMenuItem
+            // 
+            this.格式OToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.自动换行WToolStripMenuItem});
+            this.格式OToolStripMenuItem.Name = "格式OToolStripMenuItem";
+            this.格式OToolStripMenuItem.Size = new System.Drawing.Size(89, 28);
+            this.格式OToolStripMenuItem.Text = "格式(&O)";
+            // 
+            // 自动换行WToolStripMenuItem
+            // 
+            this.自动换行WToolStripMenuItem.Name = "自动换行WToolStripMenuItem";
+            this.自动换行WToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.自动换行WToolStripMenuItem.Text = "自动换行(&W)";
+            this.自动换行WToolStripMenuItem.Click += new System.EventHandler(this.自动换行WToolStripMenuItem_Click);
+            // 
+            // 粘贴并匹配参数MToolStripMenuItem
+            // 
+            this.粘贴并匹配参数MToolStripMenuItem.Image = global::Dynverter.Properties.Resources.match;
+            this.粘贴并匹配参数MToolStripMenuItem.Name = "粘贴并匹配参数MToolStripMenuItem";
+            this.粘贴并匹配参数MToolStripMenuItem.Size = new System.Drawing.Size(248, 32);
+            this.粘贴并匹配参数MToolStripMenuItem.Text = "粘贴并匹配参数(&M)";
+            this.粘贴并匹配参数MToolStripMenuItem.Click += new System.EventHandler(this.粘贴并匹配参数MToolStripMenuItem_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
@@ -527,7 +577,6 @@
         private System.Windows.Forms.ToolStripMenuItem 文件FToolStripMenuItem;
         private System.Windows.Forms.ToolStrip ToolStrip;
         private System.Windows.Forms.SplitContainer SplitContainerRtxs;
-        private System.Windows.Forms.RichTextBox RtxSourceSql;
         private System.Windows.Forms.StatusStrip StatusStripRtxSourceSql;
         private System.Windows.Forms.StatusStrip StatusStripRtxConvertedSql;
         private System.Windows.Forms.ToolStripButton BtnConvert;
@@ -549,7 +598,6 @@
         private System.Windows.Forms.TabPage TabPageConvertedSql;
         private System.Windows.Forms.ToolStripMenuItem 输出OToolStripMenuItem;
         private System.Windows.Forms.RichTextBox RtxOutput;
-        private System.Windows.Forms.RichTextBox RtxConvertedSql;
         private System.Windows.Forms.ContextMenuStrip ConMenuStripRtxSourceSql;
         private System.Windows.Forms.ToolStripMenuItem 清空CToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip ConMenuStripRtxConvertedSql;
@@ -561,6 +609,13 @@
         private System.Windows.Forms.ToolStripMenuItem 逆向转换RToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton BtnRConvert;
         private System.Windows.Forms.ToolStripMenuItem 粘贴并逆向转换RToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton BtnMatchParameters;
+        private System.Windows.Forms.ToolStripMenuItem 匹配参数MToolStripMenuItem;
+        public System.Windows.Forms.RichTextBox RtxSourceSql;
+        public System.Windows.Forms.RichTextBox RtxConvertedSql;
+        private System.Windows.Forms.ToolStripMenuItem 格式OToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 自动换行WToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 粘贴并匹配参数MToolStripMenuItem;
     }
 }
 
