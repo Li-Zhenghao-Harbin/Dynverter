@@ -54,7 +54,7 @@
             this.BtnConfirm.Location = new System.Drawing.Point(378, 10);
             this.BtnConfirm.Name = "BtnConfirm";
             this.BtnConfirm.Size = new System.Drawing.Size(150, 30);
-            this.BtnConfirm.TabIndex = 1;
+            this.BtnConfirm.TabIndex = 2;
             this.BtnConfirm.Text = "确认并匹配";
             this.BtnConfirm.UseVisualStyleBackColor = true;
             this.BtnConfirm.Click += new System.EventHandler(this.BtnConfirm_Click);
@@ -65,7 +65,7 @@
             this.BtnCancel.Location = new System.Drawing.Point(528, 10);
             this.BtnCancel.Name = "BtnCancel";
             this.BtnCancel.Size = new System.Drawing.Size(100, 30);
-            this.BtnCancel.TabIndex = 0;
+            this.BtnCancel.TabIndex = 3;
             this.BtnCancel.Text = "取消";
             this.BtnCancel.UseVisualStyleBackColor = true;
             this.BtnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
@@ -76,7 +76,7 @@
             this.PnParameters.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PnParameters.Location = new System.Drawing.Point(0, 0);
             this.PnParameters.Name = "PnParameters";
-            this.PnParameters.Padding = new System.Windows.Forms.Padding(10);
+            this.PnParameters.Padding = new System.Windows.Forms.Padding(10, 10, 10, 0);
             this.PnParameters.Size = new System.Drawing.Size(638, 267);
             this.PnParameters.TabIndex = 2;
             // 
@@ -89,8 +89,8 @@
             this.RtxParameters.Font = new System.Drawing.Font("宋体", 10.5F);
             this.RtxParameters.Location = new System.Drawing.Point(10, 10);
             this.RtxParameters.Name = "RtxParameters";
-            this.RtxParameters.Size = new System.Drawing.Size(618, 247);
-            this.RtxParameters.TabIndex = 3;
+            this.RtxParameters.Size = new System.Drawing.Size(618, 257);
+            this.RtxParameters.TabIndex = 1;
             this.RtxParameters.TabStop = false;
             this.RtxParameters.Text = "";
             // 
@@ -107,6 +107,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "参数";
+            this.Activated += new System.EventHandler(this.FrmParameters_Activated);
             this.Load += new System.EventHandler(this.FrmParameters_Load);
             this.PnBtns.ResumeLayout(false);
             this.PnParameters.ResumeLayout(false);

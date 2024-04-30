@@ -9,14 +9,21 @@ namespace Dynverter
 {
     internal class StringUtils : Base
     {
-        public string GetRealSentence(string str)
+        protected string GetRealSentence(string str)
         {
             return str.TrimStart(new char[] { ' ', '\t' });
         }
+
+        protected string ReplaceByCaseInsensitive(string origin, string match, string replacement = "")
+        {
+            int position = origin.ToUpper().IndexOf(match);
+            return position != -1 ? origin.Remove(position).Insert(position, replacement) : origin;
+        }
+
         /*
          * 前缀
          */
-        public bool CheckPrefix(string str, string prefix)
+        protected bool CheckPrefix(string str, string prefix)
         {
             str = GetRealSentence(str);
             if (str.Length < prefix.Length)
@@ -26,7 +33,7 @@ namespace Dynverter
             return str.Substring(0, prefix.Length).Equals(prefix);
         }
 
-        public bool CheckPrefixInArray(string str, string[] prefixs)
+        protected bool CheckPrefixInArray(string str, string[] prefixs)
         {
             str = GetRealSentence(str);
             foreach (string prefix in prefixs)
@@ -47,7 +54,7 @@ namespace Dynverter
         /*
          * 语句
          */
-        public string GetSentence(string str)
+        protected string GetSentence(string str)
         {
             int idx = 0;
             for (int i = 0; i < str.Length; i++)
@@ -61,7 +68,7 @@ namespace Dynverter
             return str.Substring(idx);
         }
 
-        public string GetValidSentence(string str)
+        protected string GetValidSentence(string str)
         {
             return str.Substring(str.IndexOf(KEY_SPLITTER) + 1);
         }
@@ -69,7 +76,7 @@ namespace Dynverter
         /*
          * 缩进
          */
-        public string GetSentenceWithIndent(OperateIndent operateIndent, string str = null)
+        protected string GetSentenceWithIndent(OperateIndent operateIndent, string str = null)
         {
             if (!generateIndent)
             {
@@ -99,7 +106,7 @@ namespace Dynverter
         /*
          * 关键词
          */
-        public string ReplaceParticularWords(string str)
+        protected string ReplaceParticularWords(string str)
         {
             if (replaceEscape)
             {
@@ -113,7 +120,7 @@ namespace Dynverter
             return str;
         }
 
-        public bool ContainsValues(string str)
+        protected bool ContainsValues(string str)
         {
             int left = str.IndexOf("#{"), right = str.IndexOf('}');
             return left != -1 && right != -1 && right >= left - 1;
@@ -139,7 +146,7 @@ namespace Dynverter
             return keys;
         }
 
-        public string OutputCheckValues(string key, string str)
+        protected string OutputCheckValues(string key, string str)
         {
             StringBuilder stringBuilder = new StringBuilder();
             List<string> keys = GetValues(str);
@@ -163,7 +170,7 @@ namespace Dynverter
             return stringBuilder.ToString();
         }
 
-        public string OutputCustomizedValues(string key, string condition, string str = null)
+        protected string OutputCustomizedValues(string key, string condition, string str = null)
         {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder
@@ -183,7 +190,7 @@ namespace Dynverter
          * 标签
          */
         // 如果str的前缀prefix存在，则返回双引号中的内容content。例：<if test="XX">返回XX
-        public bool GetLabelContentFromGivenPrefix(string str, string prefix, out string content)
+        protected bool GetLabelContentFromGivenPrefix(string str, string prefix, out string content)
         {
             content = "";
             if (CheckPrefix(str, prefix) && str.Last() == '>')

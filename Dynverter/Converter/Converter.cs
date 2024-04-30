@@ -71,9 +71,7 @@ namespace Dynverter
                     {
                         if (i + 1 >= sentencesCount)
                         {
-                            throw new BusinessException(
-                                BusinessException.GetExceptionMessage(
-                                    BusinessException.ExceptionMessage.未检测到替换内容));
+                            throw new BusinessException(10001);
                         }
                         sentences[i + 1] = GetValidSentence(sentences[i]);
                         sentences[i] = "";
@@ -135,23 +133,19 @@ namespace Dynverter
                                     }
                                     if (j == sentencesCount - 1)
                                     {
-                                        throw new BusinessException(
-                                            BusinessException.GetExceptionMessage(
-                                                BusinessException.ExceptionMessage.endif缺失));
+                                        throw new BusinessException(10002);
                                     }
                                 }
                                 else
                                 {
-                                    if (GetSentence(sentences[j]) == KEY_END)
+                                    if (GetSentence(sentences[j]) == KEY_END || GetSentence(sentences[j]) == KEY_END_IF)
                                     {
                                         sentences[j] = GetSentenceWithIndent(OperateIndent.REMOVE_INDENT, LABEL_END_IF);
                                         break;
                                     }
                                     if (j == sentencesCount - 1)
                                     {
-                                        throw new BusinessException(
-                                            BusinessException.GetExceptionMessage(
-                                                BusinessException.ExceptionMessage.end缺失));
+                                        throw new BusinessException(10001);
                                     }
                                     sentences[j] = "";
                                 }
@@ -161,9 +155,7 @@ namespace Dynverter
                         stack.Push(VOC_IF);
                         if (i + 1 >= sentencesCount)
                         {
-                            throw new BusinessException(
-                                BusinessException.GetExceptionMessage(
-                                    BusinessException.ExceptionMessage.if后未检测到替换内容));
+                            throw new BusinessException(10003);
                         }
                         sentences[i + 1] = containsEnd ? stringBuilder.ToString() : stringBuilder.Append(GetSentenceWithIndent(OperateIndent.REMOVE_INDENT, LABEL_NEXT_END_IF)).ToString();
                         sentences[i] = "";
@@ -204,9 +196,7 @@ namespace Dynverter
                                 }
                                 if (j == sentencesCount - 1)
                                 {
-                                    throw new BusinessException(
-                                        BusinessException.GetExceptionMessage(
-                                            BusinessException.ExceptionMessage.end缺失));
+                                    throw new BusinessException(10001);
                                 }
                                 sentences[j] = "";
                             }
@@ -216,9 +206,7 @@ namespace Dynverter
                         // 根据是否包含otherwise判断合法参数数量
                         if (!simplifyChoose && ((containsOtherwise && (m & 1) == 0) || (!containsOtherwise && (m & 1) == 1)))
                         {
-                            throw new BusinessException(
-                                BusinessException.GetExceptionMessage(
-                                    BusinessException.ExceptionMessage.choose参数数量错误));
+                            throw new BusinessException(10005);
                         }
                         for (int j = 0; j < m; j++)
                         {
@@ -270,9 +258,7 @@ namespace Dynverter
                         stack.Push(VOC_CHOOSE);
                         if (i + 1 >= sentencesCount)
                         {
-                            throw new BusinessException(
-                                BusinessException.GetExceptionMessage(
-                                    BusinessException.ExceptionMessage.choose后未检测到替换内容));
+                            throw new BusinessException(10004);
                         }
                         sentences[i + 1] = containsEnd ? stringBuilder.ToString() : stringBuilder.Append(LABEL_NEXT_END_CHOOSE).ToString();
                         sentences[i] = "";

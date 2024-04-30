@@ -40,5 +40,10 @@ namespace Dynverter
         {
             Close();
         }
+
+        private void FrmParameters_Activated(object sender, EventArgs e)
+        {
+            RtxParameters.Focus();
+        }
     }
 }

@@ -61,7 +61,7 @@ namespace Dynverter
         public const string COM_END = "-->";
         public const string COMM_BEGIN = "/*";
         public const string COMM_END = "*/";
-
+        
         /*
          * 正向替换
          */

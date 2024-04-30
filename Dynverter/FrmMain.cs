@@ -19,6 +19,7 @@ namespace Dynverter
         }
 
         public static List<string> exceptions = new List<string>();
+        public static List<string> warnings = new List<string>();
         public static string source;
 
         private void FrmMain_Load(object sender, EventArgs e)
@@ -121,9 +122,21 @@ namespace Dynverter
                 RtxOutput.Text += '\n';
             }
             StringBuilder stringBuilder = new StringBuilder();
+            foreach (string warning in warnings)
+            {
+                stringBuilder.AppendLine(warning);
+            }
             if (exceptions.Count == 0)
             {
-                RtxOutput.ForeColor = Color.Black;
+                if (warnings.Count > 0)
+                {
+                    RtxOutput.ForeColor = Color.Orange;
+                    warnings.Clear();
+                }
+                else
+                {
+                    RtxOutput.ForeColor = Color.Black;
+                }
                 RtxConvertedSql.BackColor = SystemColors.Window;
                 return stringBuilder
                     .Append('[')

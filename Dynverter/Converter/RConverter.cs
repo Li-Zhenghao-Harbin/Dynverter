@@ -106,9 +106,7 @@ namespace Dynverter
                         }
                         else
                         {
-                            throw new BusinessException(
-                                BusinessException.GetExceptionMessage(
-                                    BusinessException.ExceptionMessage.sql语句不合法));
+                            throw new BusinessException(20000);
                         }
                         sentences[i++] = stringBuilder.ToString();
                     }
@@ -166,9 +164,7 @@ namespace Dynverter
             }
             else
             {
-                throw new BusinessException(
-                    BusinessException.GetExceptionMessage(
-                        BusinessException.ExceptionMessage.sql语句不合法));
+                throw new BusinessException(20000);
             }
         }
 
