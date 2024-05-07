@@ -256,7 +256,7 @@ namespace Dynverter
         /*
          * 右键菜单-RtxSourceSql
          */
-        private void PasteToRtx(RichTextBox richTextBox)
+        public static void PasteToRtx(RichTextBox richTextBox)
         {
             richTextBox.Clear();
             IDataObject dataObject = Clipboard.GetDataObject();

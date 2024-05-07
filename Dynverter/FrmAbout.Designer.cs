@@ -42,7 +42,7 @@
             this.LblInfo.Name = "LblInfo";
             this.LblInfo.Size = new System.Drawing.Size(116, 90);
             this.LblInfo.TabIndex = 1;
-            this.LblInfo.Text = "v 1.1.4.21\r\n\r\n作者：李正浩\r\n\r\n2024.04";
+            this.LblInfo.Text = "v 1.1.4.23\r\n\r\n作者：李正浩\r\n\r\n2024.05";
             // 
             // LblTitle
             // 

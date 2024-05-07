@@ -28,6 +28,11 @@ namespace Dynverter
 
         private void BtnConfirm_Click(object sender, EventArgs e)
         {
+            ConfirmParamters();
+        }
+
+        private void ConfirmParamters()
+        {
             ParameterMatcher parameterMatcher = new ParameterMatcher(
                 FrmMain.source,
                 RtxParameters.Text);
@@ -44,6 +49,12 @@ namespace Dynverter
         private void FrmParameters_Activated(object sender, EventArgs e)
         {
             RtxParameters.Focus();
+        }
+
+        private void 粘贴并确认PToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmMain.PasteToRtx(RtxParameters);
+            ConfirmParamters();
         }
     }
 }

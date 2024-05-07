@@ -28,13 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.PnBtns = new System.Windows.Forms.Panel();
             this.BtnConfirm = new System.Windows.Forms.Button();
             this.BtnCancel = new System.Windows.Forms.Button();
             this.PnParameters = new System.Windows.Forms.Panel();
             this.RtxParameters = new System.Windows.Forms.RichTextBox();
+            this.ConMenuStripParameters = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.粘贴并确认PToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PnBtns.SuspendLayout();
             this.PnParameters.SuspendLayout();
+            this.ConMenuStripParameters.SuspendLayout();
             this.SuspendLayout();
             // 
             // PnBtns
@@ -84,6 +88,7 @@
             // 
             this.RtxParameters.AcceptsTab = true;
             this.RtxParameters.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.RtxParameters.ContextMenuStrip = this.ConMenuStripParameters;
             this.RtxParameters.DetectUrls = false;
             this.RtxParameters.Dock = System.Windows.Forms.DockStyle.Fill;
             this.RtxParameters.Font = new System.Drawing.Font("宋体", 10.5F);
@@ -93,6 +98,21 @@
             this.RtxParameters.TabIndex = 1;
             this.RtxParameters.TabStop = false;
             this.RtxParameters.Text = "";
+            // 
+            // ConMenuStripParameters
+            // 
+            this.ConMenuStripParameters.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.ConMenuStripParameters.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.粘贴并确认PToolStripMenuItem});
+            this.ConMenuStripParameters.Name = "ConMenuStripParameters";
+            this.ConMenuStripParameters.Size = new System.Drawing.Size(194, 34);
+            // 
+            // 粘贴并确认PToolStripMenuItem
+            // 
+            this.粘贴并确认PToolStripMenuItem.Name = "粘贴并确认PToolStripMenuItem";
+            this.粘贴并确认PToolStripMenuItem.Size = new System.Drawing.Size(240, 30);
+            this.粘贴并确认PToolStripMenuItem.Text = "粘贴并确认(&P)";
+            this.粘贴并确认PToolStripMenuItem.Click += new System.EventHandler(this.粘贴并确认PToolStripMenuItem_Click);
             // 
             // FrmParameters
             // 
@@ -111,6 +131,7 @@
             this.Load += new System.EventHandler(this.FrmParameters_Load);
             this.PnBtns.ResumeLayout(false);
             this.PnParameters.ResumeLayout(false);
+            this.ConMenuStripParameters.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -122,5 +143,7 @@
         private System.Windows.Forms.Button BtnCancel;
         private System.Windows.Forms.Panel PnParameters;
         private System.Windows.Forms.RichTextBox RtxParameters;
+        private System.Windows.Forms.ContextMenuStrip ConMenuStripParameters;
+        private System.Windows.Forms.ToolStripMenuItem 粘贴并确认PToolStripMenuItem;
     }
 }

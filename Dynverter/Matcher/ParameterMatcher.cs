@@ -38,7 +38,7 @@ namespace Dynverter.Matcher
                 }
             }
             // 参数转换成字符串类型
-            string[] particularParameterType = new string[] { "(STRING)", "(TIMESTAMP)" };
+            string[] particularParameterType = new string[] { "(STRING)", "(TIMESTAMP)" }; // 特殊参数转换后需要加引号
             string[] commomPararmeterType = new string[] { "(BIGDECIMAL)", "(INTEGER)" };
             for (int i = 0; i < parameters.Count; i++)
             {
@@ -50,9 +50,9 @@ namespace Dynverter.Matcher
                     {
                         StringBuilder stringBuilder = new StringBuilder();
                         stringBuilder
-                            .Append("\"")
+                            .Append("\'")
                             .Append(ReplaceByCaseInsensitive(parameters[i], particularParameterType[j]))
-                            .Append("\"");
+                            .Append("\'");
                         parameters[i] = stringBuilder.ToString();
                     }
                     else
