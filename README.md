@@ -12,5 +12,5 @@
 
 ### 说明
 + 版本更新内容见 `UPDATE.md`
-+ 使用说明见 `document/Dynverter Maunal.pdf`
++ 使用说明见 `Dynverter Maunal.pdf`
 + 可执行程序存放于 `product` 目录下

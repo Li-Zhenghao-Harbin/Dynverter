@@ -14,6 +14,9 @@ namespace Dynverter.Matcher
         string sql;
         List<string> parameters = new List<string>();
 
+        /**
+         * 匹配参数
+         */
         public ParameterMatcher(string sql, string parameterString)
         {
             this.sql = sql;
@@ -21,9 +24,37 @@ namespace Dynverter.Matcher
             Match();
         }
 
+        /**
+         * 自动匹配参数
+         */
+        public ParameterMatcher(string str)
+        {
+            try
+            {
+                if (str.IndexOf(MATCH_PREPARING) == -1 ||
+                    str.IndexOf(MATCH_PARAMETERS) == -1 ||
+                    (str.IndexOf(MATCH_PREPARING) != str.LastIndexOf(MATCH_PREPARING)) ||
+                    (str.IndexOf(MATCH_PARAMETERS) != str.LastIndexOf(MATCH_PARAMETERS)) ||
+                    str.IndexOf(MATCH_PREPARING) > str.IndexOf(MATCH_PARAMETERS))
+                {
+                    throw new BusinessException(30000);
+                }
+                sql = str.Substring(
+                    str.IndexOf(MATCH_PREPARING) + MATCH_PREPARING.Length,
+                    str.IndexOf(MATCH_PARAMETERS) - str.IndexOf(MATCH_PREPARING) - MATCH_PREPARING.Length)
+                    .Replace("==>", "").Trim();
+                parameters = GetParameters(str.Substring(str.IndexOf(MATCH_PARAMETERS) + MATCH_PARAMETERS.Length));
+                Match();
+            }
+            catch
+            {
+                
+            }
+        }
+
         private List<string> GetParameters(string parameterString)
         {
-            parameterString = parameterString.Replace(" ", "");
+            parameterString = parameterString.Replace(" ", "").Replace("\n", "").Replace("\t", "");
             List<string> parameters = new List<string>();
             const char splitter = ',';
             if (parameterString != null)

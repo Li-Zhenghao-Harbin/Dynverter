@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dynverter.Matcher;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -95,6 +96,12 @@ namespace Dynverter
             {
                 DisplayConvertedResult(FrmParameters.matchedResult);
             }
+        }
+
+        private void AutoMatchParameters()
+        {
+            ParameterMatcher parameterMatcher = new ParameterMatcher(RtxSourceSql.Text);
+            DisplayConvertedResult(parameterMatcher.GetResult());
         }
 
         public void DisplayConvertedResult(string result)
@@ -197,7 +204,7 @@ namespace Dynverter
         }
 
         /*
-         * 菜单-编辑
+         * 菜单-生成
          */
         private void 转换CToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -212,6 +219,11 @@ namespace Dynverter
         private void 匹配参数MToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShowMatchParametersForm();
+        }
+
+        private void 自动匹配参数AToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AutoMatchParameters();
         }
 
         /*
@@ -286,6 +298,12 @@ namespace Dynverter
         {
             PasteToRtx(RtxSourceSql);
             ShowMatchParametersForm();
+        }
+
+        private void 粘贴并自动匹配参数AToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PasteToRtx(RtxSourceSql);
+            AutoMatchParameters();
         }
 
         private void 清空CToolStripMenuItem_Click(object sender, EventArgs e)

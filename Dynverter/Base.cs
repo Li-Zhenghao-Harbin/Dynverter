@@ -61,7 +61,12 @@ namespace Dynverter
         public const string COM_END = "-->";
         public const string COMM_BEGIN = "/*";
         public const string COMM_END = "*/";
-        
+
+        // 匹配参数关键词
+        public const string MATCH_PREPARING = "Preparing:";
+        public const string MATCH_PARAMETERS = "Parameters:";
+
+        // ======设置======
         /*
          * 正向替换
          */

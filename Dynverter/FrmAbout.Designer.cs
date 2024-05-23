@@ -42,7 +42,7 @@
             this.LblInfo.Name = "LblInfo";
             this.LblInfo.Size = new System.Drawing.Size(116, 90);
             this.LblInfo.TabIndex = 1;
-            this.LblInfo.Text = "v 1.1.4.23\r\n\r\n作者：李正浩\r\n\r\n2024.05";
+            this.LblInfo.Text = "v 1.1.5.25\r\n\r\n作者：李正浩\r\n\r\n2024.05";
             // 
             // LblTitle
             // 
@@ -66,6 +66,7 @@
             // 
             // PicLogo
             // 
+            this.PicLogo.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.PicLogo.Image = global::Dynverter.Properties.Resources.logo;
             this.PicLogo.Location = new System.Drawing.Point(12, 12);
             this.PicLogo.Name = "PicLogo";
@@ -78,6 +79,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(472, 276);
             this.Controls.Add(this.BtnConfirm);
             this.Controls.Add(this.LblTitle);
