@@ -16,7 +16,7 @@ namespace Dynverter
             { 10005, "choose参数数量错误"},
             { 20000, "sql语句不合法"},
             { 30000, "自动匹配内容格式不正确"},
-            // { 99999, "系统异常" },
+            { 99999, "系统异常" },
         };
 
         public BusinessException(int errorCode) : base(errorCode.ToString())

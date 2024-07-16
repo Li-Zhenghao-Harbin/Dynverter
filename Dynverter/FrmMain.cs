@@ -174,6 +174,7 @@ namespace Dynverter
                     Clipboard.SetData(DataFormats.StringFormat, content);
                     RtxSourceSql.Paste();
                 }
+                e.SuppressKeyPress = true;
             }
         }
 

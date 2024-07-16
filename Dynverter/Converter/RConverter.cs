@@ -109,6 +109,27 @@ namespace Dynverter
                             throw new BusinessException(20000);
                         }
                         sentences[i++] = stringBuilder.ToString();
+                        // 删除<if>后直到</if>的内容
+                        if (GetLineIndexOfNextStr(sentences, KEY_END_IF, i + 1, out List<int> nextEndIfIndexArray))
+                        {
+                            int nestedIfCount = 0;
+                            for (int j = i + 1; j < nextEndIfIndexArray[nestedIfCount]; j++)
+                            {
+                                // 避开删除嵌套的<if>
+                                if (!CheckPrefix(sentences[j], LABEL_IF_PRE))
+                                {
+                                    // 保留</if>
+                                    if (!CheckPrefix(sentences[j], KEY_END_IF))
+                                    {
+                                        sentences[j] = "";
+                                    }
+                                }
+                                else
+                                {
+                                    nestedIfCount++; // 检测到嵌套的<if>标签，需要继续处理
+                                }
+                            }
+                        }
                     }
                     catch (Exception) { }
                 }

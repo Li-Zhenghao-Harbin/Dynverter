@@ -126,6 +126,37 @@ namespace Dynverter
             return left != -1 && right != -1 && right >= left - 1;
         }
 
+        // 获取sentences中currentLineIndex下，下一个最接近的str的位置targetLineIndex
+        protected bool GetLineIndexOfNextStr(List<string> senctences, string str, int currentLineIndex, out int targetLineIndex)
+        {
+            targetLineIndex = -1;
+            for (int i = currentLineIndex; i < senctences.Count; i++)
+            {
+                if (senctences[i] == str)
+                {
+                    targetLineIndex = i;
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        // 获取sentences中currentLineIndex下，接下来所有的str的位置targetLineIndexArray
+        protected bool GetLineIndexOfNextStr(List<string> senctences, string str, int currentLineIndex, out List<int> targetLineIndexArray)
+        {
+            targetLineIndexArray = new List<int>();
+            bool containsIndex = false;
+            for (int i = currentLineIndex; i < senctences.Count; i++)
+            {
+                if (senctences[i] == str)
+                {
+                    targetLineIndexArray.Add(i);
+                    containsIndex = true;
+                }
+            }
+            return containsIndex;
+        }
+
         // debug
         private List<string> GetValues(string str)
         {
