@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,15 +20,36 @@ namespace Dynverter
             InitializeComponent();
         }
 
+        // 一级checkbox和二级checkbox的映射
+        Dictionary<CheckBox, CheckBox> checkBoxLinks;
+
         private void FrmOption_Load(object sender, EventArgs e)
         {
+            // 初始化checkbox映射
+            checkBoxLinks = new Dictionary<CheckBox, CheckBox>()
+            {
+                { Ck_NestedIf, Ck_ContainsEnd },
+                { Ck_RetainReplacedSentence, Ck_RestoreCommon }
+            };
+            foreach (CheckBox checkBox in checkBoxLinks.Values)
+            {
+                checkBox.CheckedChanged += CheckBoxLinks_CheckChanged;
+            }
             // 加载选项
             LoadOptions();
         }
 
-        private void LinkedCheckBox()
+        private void LinkCheckBox()
         {
-            Ck_NestedIf.Enabled = Ck_ContainsEnd.Checked;
+            foreach (KeyValuePair<CheckBox, CheckBox> link in checkBoxLinks)
+            {
+                link.Key.Enabled = link.Value.Checked;
+            }
+        }
+
+        private void CheckBoxLinks_CheckChanged(object sender, EventArgs e)
+        {
+            LinkCheckBox();
         }
 
         private void LoadOptions()
@@ -36,6 +59,7 @@ namespace Dynverter
             Ck_ReplaceChoose.Checked = Base.replaceChoose;
 
             Ck_RestoreCommon.Checked = Base.restoreCommon;
+            Ck_RetainReplacedSentence.Checked = Base.retainReplacedSentence;
             Ck_RestoreIf.Checked = Base.restoreIf;
             Ck_RestoreChoose.Checked = Base.restoreChoose;
 
@@ -47,7 +71,7 @@ namespace Dynverter
             Ck_SimplifyChoose.Checked = Base.simplifyChoose;
             Ck_ContainsEnd.Checked = Base.containsEnd;
             Ck_NestedIf.Checked = Base.nestedIf;
-            LinkedCheckBox();
+            LinkCheckBox();
         }
 
         private void BtnConfirm_Click(object sender, EventArgs e)
@@ -57,6 +81,7 @@ namespace Dynverter
             Base.replaceChoose = Ck_ReplaceChoose.Checked;
 
             Base.restoreCommon = Ck_RestoreCommon.Checked;
+            Base.retainReplacedSentence = Ck_RetainReplacedSentence.Checked;
             Base.restoreIf = Ck_RestoreIf.Checked;
             Base.restoreChoose = Ck_RestoreChoose.Checked;
 
@@ -76,11 +101,6 @@ namespace Dynverter
         private void BtnCancel_Click(object sender, EventArgs e)
         {
             Close();
-        }
-
-        private void Ck_ContainsEnd_CheckedChanged(object sender, EventArgs e)
-        {
-            LinkedCheckBox();
         }
     }
 }

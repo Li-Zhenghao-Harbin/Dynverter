@@ -35,7 +35,7 @@ namespace Dynverter
                         StringBuilder stringBuilder = new StringBuilder();
                         stringBuilder
                             .Append(COM_BEGIN_PRE)
-                            .Append(sentences[i])
+                            .Append(GetSentence(sentences[i]))
                             .Append(COM_END);
                         sentences[i] = stringBuilder.ToString();
                     }
@@ -71,9 +71,10 @@ namespace Dynverter
                     {
                         if (i + 1 >= sentencesCount)
                         {
-                            throw new BusinessException(10001);
+                            sentences.Add(""); // 自动解决缺失内容
+                            //throw new BusinessException(10000);
                         }
-                        sentences[i + 1] = GetValidSentence(sentences[i]);
+                        sentences[i + 1] = ReplaceParticularWords(GetValidSentence(sentences[i]));
                         sentences[i] = "";
                     }
                     catch (Exception) { }
@@ -155,7 +156,8 @@ namespace Dynverter
                         stack.Push(VOC_IF);
                         if (i + 1 >= sentencesCount)
                         {
-                            throw new BusinessException(10003);
+                            sentences.Add(""); // 自动解决if后缺失内容
+                            //throw new BusinessException(10003);
                         }
                         sentences[i + 1] = containsEnd ? stringBuilder.ToString() : stringBuilder.Append(GetSentenceWithIndent(OperateIndent.REMOVE_INDENT, LABEL_NEXT_END_IF)).ToString();
                         sentences[i] = "";
@@ -258,7 +260,8 @@ namespace Dynverter
                         stack.Push(VOC_CHOOSE);
                         if (i + 1 >= sentencesCount)
                         {
-                            throw new BusinessException(10004);
+                            sentences.Add(""); // 自动解决choose后缺失内容
+                            //throw new BusinessException(10004);
                         }
                         sentences[i + 1] = containsEnd ? stringBuilder.ToString() : stringBuilder.Append(LABEL_NEXT_END_CHOOSE).ToString();
                         sentences[i] = "";

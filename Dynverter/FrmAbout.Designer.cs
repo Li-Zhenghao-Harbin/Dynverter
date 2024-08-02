@@ -42,7 +42,7 @@
             this.LblInfo.Name = "LblInfo";
             this.LblInfo.Size = new System.Drawing.Size(116, 90);
             this.LblInfo.TabIndex = 1;
-            this.LblInfo.Text = "v 1.1.5.27\r\n\r\n作者：李正浩\r\n\r\n2024.07";
+            this.LblInfo.Text = "v 1.1.6.33\r\n\r\n作者：李正浩\r\n\r\n2024.08";
             // 
             // LblTitle
             // 
@@ -85,6 +85,7 @@
             this.Controls.Add(this.LblTitle);
             this.Controls.Add(this.LblInfo);
             this.Controls.Add(this.PicLogo);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmAbout";

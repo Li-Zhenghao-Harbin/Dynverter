@@ -68,6 +68,10 @@ namespace Dynverter
                         .Append(KEY_COMMON)
                         .Append(GetRealSentence(sentences[i]))
                         .AppendLine();
+                    if (retainReplacedSentence)
+                    {
+                        stringBuilder.Append(sentences[i]);
+                    }
                     sentences[i] = stringBuilder.ToString();
                 }
             }

@@ -91,7 +91,7 @@ namespace Dynverter
         // 是否使用语法词'--end@'
         public static bool containsEnd = false;
 
-        // 是否允许嵌套if语句（必须勾选"使用语法词'--end@'"）
+        // 是否允许嵌套if语句（必须勾选"使用语法词'--end@'"，即containsEnd=true）
         public static bool nestedIf = false;
 
         /*
@@ -101,5 +101,7 @@ namespace Dynverter
         public static bool restoreCommon = true;
         public static bool restoreIf = true;
         public static bool restoreChoose = true;
+        // 是否保留被替换的语句
+        public static bool retainReplacedSentence = false;
     }
 }

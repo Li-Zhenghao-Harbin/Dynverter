@@ -21,6 +21,7 @@ namespace Dynverter
                 replaceChoose = Convert.ToBoolean(ConfigurationManager.AppSettings["ReplaceCHOOSE"]);
                 //replaceWhere = Convert.ToBoolean(ConfigurationManager.AppSettings["ReplaceWHERE"]);
                 restoreCommon = Convert.ToBoolean(ConfigurationManager.AppSettings["RestoreCommon"]);
+                retainReplacedSentence = Convert.ToBoolean(ConfigurationManager.AppSettings["RetainReplacedSentence"]);
                 restoreIf = Convert.ToBoolean(ConfigurationManager.AppSettings["RestoreIF"]);
                 restoreChoose = Convert.ToBoolean(ConfigurationManager.AppSettings["RestoreCHOOSE"]);
                 replaceEscape = Convert.ToBoolean(ConfigurationManager.AppSettings["ReplaceEscape"]);
@@ -66,6 +67,10 @@ namespace Dynverter
                     case "RestoreCommon":
                         att = nodes[i].Attributes["value"];
                         att.Value = restoreCommon.ToString();
+                        break;
+                    case "RetainReplacedSentence":
+                        att = nodes[i].Attributes["value"];
+                        att.Value = retainReplacedSentence.ToString();
                         break;
                     case "RestoreIF":
                         att = nodes[i].Attributes["value"];
